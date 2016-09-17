@@ -1,17 +1,17 @@
 #!/usr/bin/usr python
 """
-clone-all-yer-repos - Clones all repos by username
+clone-all-yer-repos - Clones all public github repos in an account
 
 Usage:
   clone-all-yer-repos <username>
-  clone-all-yer-repos [ -h | --help | --version ]
+  clone-all-yer-repos [ -h | --help | -v | --version ]
 
 Options:
-  --version               Show version
+  -v --version            Show version
   -h --help               Show this screen
 """
 
-import requests
+from requests import get
 from docopt import DocoptExit, docopt
 
 
@@ -32,18 +32,17 @@ def main():
     except DocoptExit as e:
         print(e.message)
 
+
 def get_github_url_as_json(user):
     url = 'https://api.github.com/users/{0}'.format(user)
-    r = requests.get(url)
-    print(r.text)
-    return(r.text)
+    print(get(url).text)
+    return(get(url).text)
 
 
 # get total repos and divivde by 100
 # use requests to snag attribute - "public_repos": X
 def get_total_number_pages_of_url():
     return "place holder"
-
 
 
 if __name__ == "__main__":
