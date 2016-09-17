@@ -7,13 +7,14 @@ Usage:
   clone-all-yer-repos [ -h | --help | --version ]
 
 Options:
-  --version               Show version.
-  -h --help               Show this screen.
+  --version               Show version
+  -h --help               Show this screen
   -u --username USERNAME  Specify github username to create
 """
-
+from __future__ import absolute_import, division, print_function
 from urllib2 import urlopen
 from docopt import DocoptExit, docopt
+
 
 # about
 __author__ = "Andrew Kuttor "
@@ -25,7 +26,8 @@ __version__ = "1.0.0"
 def main():
     try:
         args = docopt(__doc__, version='Clone All Yer Repos - v1.0')
-        get_total_pages(**args)
+        print args
+        # get_total_pages(**args)
     except DocoptExit as e:
         print e.message
 
