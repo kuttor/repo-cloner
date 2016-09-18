@@ -12,7 +12,8 @@ Options:
   -h --help               Show this screen
 """
 
-from requests import
+from requests import get
+from pprint import pprint
 from docopt import DocoptExit, docopt
 
 
@@ -27,17 +28,15 @@ def main():
     try:
         args = docopt(__doc__, version='Clone All Yer Repos - v1.0')
         print(args)
-        get_total_pages(args['<username>'])
-
-        # get_total_pages(**args)
+        url_to_json(args['<username>'])
     except DocoptExit as e:
         print(e.message)
 
 
-def get_github_url_as_json(user):
+def url_to_json(user):
     url = 'https://api.github.com/users/{0}'.format(user)
-    print(get(url).text)
-    return(get(url).text)
+    pprint(get(url).json()) # test output
+    return(get(url).json())
 
 
 # get total repos and divivde by 100
