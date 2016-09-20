@@ -30,7 +30,6 @@ def main():
         args = docopt(__doc__, version='Clone All Yer Repos - v1.0')
         total_repos = github_to_json(account=args['<username>'])['public_repos']
         clone_repos(total_repos=total_repos, account=args['<username>'])
-
     except DocoptExit as e:
         print(e.message)
 
