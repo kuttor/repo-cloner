@@ -1,4 +1,4 @@
-#!/usr/bin/usr python
+#!/usr/bin/env python
 """
 clone-all-yer-repos - Clones all public github repos in an account
 
@@ -28,15 +28,16 @@ __version__ = '1.0.0'
 def main():
     try:
         args = docopt(__doc__, version='Clone All Yer Repos - v1.0')
-        total_repos = github_to_json(account=args['<username>'])['public_repos']
-        clone_repos(total_repos=total_repos, account=args['<username>'])
+        username = args['<username>']
+        repos = total_repos(account=username)
+        clone_repos(total_repos=repos, account=username)
 
     except DocoptExit as e:
         print(e.message)
 
 
-def github_to_json(account):
-    url = 'https://api.github.com/users/{}/repos'.format(account)
+def total_repos(account):
+    url = 'https://api.github.com/users/{}'.format(account)
     json = (get(url).json())
     return(json)
 
@@ -44,14 +45,10 @@ def github_to_json(account):
 def clone_repos(total_repos, account):
     url = 'https://api.github.com/users/{}/repos?'.format(account)
     num = 0
-    for num in url:
+    for repo in url:
         if num <= total_repos:
-            url = url + 'page={}per_page=1'.format(num)
-            print(url['0']['git_url'])
-
-
-def total_repos(total_repos):
-    return 'place holder'
+            num += 1
+            print(url + 'page={}per_page=1'.format(num))
 
 
 if __name__ == '__main__':
