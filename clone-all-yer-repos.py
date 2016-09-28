@@ -47,8 +47,10 @@ def clone_repos(total, account):
     'page={1}per_page=1'''.format(account, num)
     json = (get(url).json())
 
+    print("\nTotal Git repos to be cloned: {}".format(total)) + "\n"
+
     while num < total:
-        print("Cloning: {}".format(json[num]['git_url']))
+        print("Cloning: {}".format(json[num]['name']))
         num += 1
 
 
