@@ -12,9 +12,8 @@ Options:
   -h --help               Show this screen
 """
 
-import git
+import os
 from requests import get
-from pprint import pprint
 from docopt import DocoptExit, docopt
 
 
@@ -30,25 +29,27 @@ def main():
         args = docopt(__doc__, version='Clone All Yer Repos - v1.0')
         username = args['<username>']
         repos = total_repos(account=username)
-        clone_repos(total_repos=repos, account=username)
-
+        clone_repos(total=repos, account=username)
     except DocoptExit as e:
         print(e.message)
 
 
+# returns total repos as int
 def total_repos(account):
     url = 'https://api.github.com/users/{}'.format(account)
     json = (get(url).json())
-    return(json)
+    return(json['public_repos'])
 
 
-def clone_repos(total_repos, account):
-    url = 'https://api.github.com/users/{}/repos?'.format(account)
+def clone_repos(total, account):
     num = 0
-    for repo in url:
-        if num <= total_repos:
-            num += 1
-            print(url + 'page={}per_page=1'.format(num))
+    url = '''https://api.github.com/users/{0}/repos?\
+    'page={1}per_page=1'''.format(account, num)
+    json = (get(url).json())
+
+    while num < total:
+        print(json[num]['git_url'])
+        num += 1
 
 
 if __name__ == '__main__':
