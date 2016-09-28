@@ -48,7 +48,7 @@ def clone_repos(total, account):
     json = (get(url).json())
 
     while num < total:
-        print(json[num]['git_url'])
+        print("Cloning: {}".format(json[num]['git_url']))
         num += 1
 
 
