@@ -1,9 +1,14 @@
-Clone All Yer Repos
+clone-all-yer-repos - Clones all public github repos in an account
 
-Clones all repos by user name. 
+Usage:
+  clone-all-yer-repos <username>
+  clone-all-yer-repos [ -h | --help ]
+  clone-all-yer-repos [ -v | --version ]
 
-Execution can be done via Shell or Python Script. 
+Options:
+  -v --version            Show version
+  -h --help               Show this screen
 
-Enjoy!
 
-Progress: In Development
+
+Progress: Working
