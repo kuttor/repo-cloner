@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 
 """
-clone-all-yer-repos - Clones all public github repos in an account
+repo-cloner - Clones all public github repos in an account
 
 Usage:
-  clone-all-yer-repos <username>
-  clone-all-yer-repos [ -h | --help ]
-  clone-all-yer-repos [ -v | --version ]
+  repo-cloner <username>
+  repo-cloner [ -h | --help ]
+  repo-cloner [ -v | --version ]
 
 Options:
   -v --version            Show version
@@ -24,7 +24,7 @@ __version__ = '1.2.1'
 
 
 # -----------------------------------------------------------------------------
-# Main 
+# Main
 # -----------------------------------------------------------------------------
 
 def main():
@@ -55,7 +55,7 @@ def clone_repos(total, account):
     print("\nTotal Git repos to be cloned: {}".format(total)) + "\n"
 
     while num < total:
-        address=json[num]['git_url']
+        address = json[num]['git_url']
 
         print("Cloning: {}".format(json[num]['name']))
         os.system("git clone {} {}/{}\
