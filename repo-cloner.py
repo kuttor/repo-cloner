@@ -20,8 +20,8 @@ from docopt import DocoptExit, docopt
 # about
 __author__ = 'Andrew Kuttor'
 __maintainer__ = 'Andrew Kuttor'
-__email__ = 'akuttor@gmail.com'
-__version__ = '1.0.0'
+__email__ = 'andrew.kuttor@gmail.com'
+__version__ = '1.2.1'
 
 
 def main():
@@ -33,7 +33,6 @@ def main():
         clone_repos(total=repos, account=username)
     except DocoptExit as e:
         print(e.message)
-
 
 
 def total_repos(account):
