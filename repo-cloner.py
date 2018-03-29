@@ -30,7 +30,7 @@ __version__ = '1.2.1'
 def main():
     '''performs execution and logic for the arg parser'''
     try:
-        args = docopt(__doc__, version='Clone All Yer Repos - v1.0')
+        args = docopt(__doc__, version='repo-cloner - v1.2.0')
         username = args['<username>']
         repos = total_repos(account=username)
         clone_repos(total=repos, account=username)
