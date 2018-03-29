@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 """
 clone-all-yer-repos - Clones all public github repos in an account
 
@@ -16,13 +17,15 @@ import os
 from requests import get
 from docopt import DocoptExit, docopt
 
-
-# about
 __author__ = 'Andrew Kuttor'
 __maintainer__ = 'Andrew Kuttor'
 __email__ = 'andrew.kuttor@gmail.com'
 __version__ = '1.2.1'
 
+
+# ------------------------------------------------------------------------------
+# Main 
+# ------------------------------------------------------------------------------
 
 def main():
     '''performs execution and logic for the arg parser'''
@@ -36,7 +39,7 @@ def main():
 
 
 def total_repos(account):
-    '''stores and returns total repos '''
+    '''stores and returns total repos'''
     url = 'https://api.github.com/users/{}'.format(account)
     json = (get(url).json())
     return(json['public_repos'])
